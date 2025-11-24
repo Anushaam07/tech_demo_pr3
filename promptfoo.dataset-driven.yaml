@@ -1,0 +1,57 @@
+---
+description: Dataset-driven regression tests using CSV data
+providers:
+  - id: http
+    label: rag_query
+    config:
+      url: http://127.0.0.1:8000/query
+      method: POST
+      headers:
+        Content-Type: application/json
+      body:
+        query: "{{prompt}}"
+        file_id: "{{file_id}}"
+        entity_id: "{{entity_id}}"
+        k: 4
+
+prompts:
+  - "{{user_query}}"
+
+tests:
+  - name: "CSV Test 1"
+    vars:
+      user_query: "What are the main points in this document?"
+      file_id: testid1
+      entity_id: test-user
+      expected_topic: summary
+    assertions:
+      - type: javascript
+        value: "output && output.length > 0"
+  
+  - name: "CSV Test 2"
+    vars:
+      user_query: "Summarize the key findings"
+      file_id: testid2
+      entity_id: test-user
+      expected_topic: findings
+    assertions:
+      - type: javascript
+        value: "output && output.length > 0"
+  
+  - name: "Edge case - Empty query"
+    vars:
+      user_query: ""
+      file_id: testid1
+      entity_id: test-user
+    assertions:
+      - type: javascript
+        value: "output.includes('error') || output.length === 0"
+  
+  - name: "Edge case - Non-existent file"
+    vars:
+      user_query: "Summarize this document"
+      file_id: "nonexistent-12345"
+      entity_id: test-user
+    assertions:
+      - type: javascript
+        value: "output.includes('error') || output.includes('not found') || output.length === 0"

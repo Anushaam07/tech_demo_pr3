@@ -1,0 +1,175 @@
+---
+description: LLM output quality testing for RAG with summarization
+providers:
+  - id: http
+    label: rag_summarization
+    config:
+      url: http://127.0.0.1:8000/query_with_summary
+      method: POST
+      headers:
+        Content-Type: application/json
+      body:
+        query: "{{prompt}}"
+        entity_id: test-user
+        file_id: testid1
+        k: 4
+        temperature: 0.7
+        max_tokens: 500
+
+prompts:
+  - "{{user_query}}"
+
+defaultTest:
+  vars:
+    entity_id: test-user
+    file_id: testid1
+
+tests:
+  # Test 1: Factual grounding
+  - name: "Answer grounded in retrieved context"
+    vars:
+      user_query: "What are the main topics discussed in the document?"
+    assertions:
+      # Check that we got a response
+      - type: javascript
+        value: |
+          const response = JSON.parse(output);
+          return response.summary && response.summary.length > 20;
+      
+      # Verify chunks were retrieved
+      - type: javascript
+        value: |
+          const response = JSON.parse(output);
+          return response.retrieved_chunks && response.retrieved_chunks.length > 0;
+      
+      # LLM-graded: Check if answer is grounded in context
+      - type: llm-rubric
+        value: |
+          Compare the summary with the retrieved chunks. 
+          The answer must be based on information from the chunks.
+          Score 1-5 where:
+          1 = Answer contains information not in chunks (hallucination)
+          5 = Answer is fully grounded in the provided chunks
+
+  # Test 2: Hallucination detection
+  - name: "No hallucination when info not available"
+    vars:
+      user_query: "What is the CEO's favorite color?"
+    assertions:
+      # Should acknowledge lack of information
+      - type: javascript
+        value: |
+          const response = JSON.parse(output);
+          const summary = response.summary.toLowerCase();
+          return summary.includes("don't") || 
+                 summary.includes("not found") ||
+                 summary.includes("no information") ||
+                 summary.includes("cannot find") ||
+                 summary.includes("doesn't contain");
+      
+      # LLM-graded: Verify appropriate uncertainty
+      - type: llm-rubric
+        value: |
+          If the context doesn't contain the answer, the response should clearly 
+          state that it doesn't have that information. It should NOT make up an answer.
+          Score 5 if properly declines, 1 if hallucinated an answer.
+
+  # Test 3: Citation and chunk usage
+  - name: "Uses retrieved chunks in answer"
+    vars:
+      user_query: "Summarize the key recommendations"
+    assertions:
+      - type: javascript
+        value: |
+          const response = JSON.parse(output);
+          return response.metadata.chunks_retrieved >= 2;
+      
+      # Check reasonable length (not too short)
+      - type: javascript
+        value: |
+          const response = JSON.parse(output);
+          return response.summary.length >= 50 && response.summary.length <= 1000;
+
+  # Test 4: Relevance to query
+  - name: "Answer is relevant to question"
+    vars:
+      user_query: "What are the main challenges mentioned?"
+    assertions:
+      - type: llm-rubric
+        value: |
+          Does the answer directly address the question about challenges?
+          Score 1-5 where:
+          1 = Completely off-topic
+          5 = Directly and thoroughly answers the question
+
+  # Test 5: Conciseness (no excessive verbosity)
+  - name: "Concise answer without fluff"
+    vars:
+      user_query: "What is this document about?"
+    assertions:
+      # Not too verbose
+      - type: javascript
+        value: |
+          const response = JSON.parse(output);
+          return response.summary.length < 800;
+      
+      - type: llm-rubric
+        value: |
+          Is the answer concise and to-the-point, without unnecessary verbosity?
+          Score 1-5 where:
+          1 = Very verbose with lots of filler
+          5 = Concise and well-structured
+
+  # Test 6: Empty query handling
+  - name: "Handle empty context gracefully"
+    vars:
+      user_query: "Tell me about xyzabc123nonexistent"
+      file_id: nonexistent-file
+    assertions:
+      - type: javascript
+        value: |
+          const response = JSON.parse(output);
+          return response.summary.toLowerCase().includes("couldn't find") ||
+                 response.summary.toLowerCase().includes("no relevant");
+
+  # Test 7: Performance check
+  - name: "Response latency acceptable"
+    vars:
+      user_query: "Quick summary please"
+    assertions:
+      - type: javascript
+        value: |
+          const response = JSON.parse(output);
+          return response.metadata.total_latency_ms < 5000;
+      
+      # Check token usage is reasonable
+      - type: javascript
+        value: |
+          const response = JSON.parse(output);
+          return response.metadata.tokens_total > 0 && response.metadata.tokens_total < 2000;
+
+  # Test 8: Metadata completeness
+  - name: "Response includes complete metadata"
+    vars:
+      user_query: "What are the findings?"
+    assertions:
+      - type: javascript
+        value: |
+          const response = JSON.parse(output);
+          const meta = response.metadata;
+          return meta.model && 
+                 meta.retrieval_latency_ms >= 0 &&
+                 meta.llm_latency_ms >= 0 &&
+                 meta.chunks_retrieved >= 0 &&
+                 meta.tokens_total >= 0 &&
+                 meta.cost_usd >= 0;
+
+  # Test 9: Consistency check
+  - name: "Consistent answers for similar queries"
+    vars:
+      user_query: "What are the main points?"
+    assertions:
+      - type: javascript
+        value: |
+          const response = JSON.parse(output);
+          return response.summary.length > 30;

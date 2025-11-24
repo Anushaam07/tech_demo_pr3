@@ -1,0 +1,15 @@
+.git
+.idea
+.venv
+.env
+__pycache__
+uploads/
+myenv/
+venv/
+*.pyc
+dev.yml
+SHOPIFY.md
+/node_modules
+
+
+.env.example

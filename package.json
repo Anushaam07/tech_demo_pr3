@@ -1,0 +1,39 @@
+{
+  "name": "rag-api-promptfoo",
+  "version": "1.0.0",
+  "description": "Promptfoo test automation scripts for RAG API",
+  "scripts": {
+    "test:baseline": "promptfoo eval --config promptfoo.config.yaml",
+    "test:multi-endpoint": "promptfoo eval --config promptfoo.multi-endpoint.yaml",
+    "test:guardrails": "promptfoo eval --config promptfoo.guardrails.yaml",
+    "test:performance": "promptfoo eval --config promptfoo.performance.yaml",
+    "test:dataset": "promptfoo eval --config promptfoo.dataset-driven.yaml",
+    "test:compare": "promptfoo eval --config promptfoo.compare.yaml",
+    "test:llm-quality": "promptfoo eval --config promptfoo.llm-quality.yaml",
+    "test:prompt-optimization": "promptfoo eval --config promptfoo.prompt-optimization.yaml",
+    "test:redteam": "promptfoo redteam run --config promptfoo.redteam.yaml",
+    "test:redteam:llm": "promptfoo redteam run --config promptfoo.redteam-llm.yaml",
+    "test:redteam:full": "promptfoo redteam run --config promptfoo.redteam-comprehensive.yaml",
+    "test:redteam:custom": "promptfoo redteam run --config promptfoo.redteam.yaml --plugins file://promptfoo/plugins/custom-rag-attacks.yaml",
+    "test:all": "npm run test:baseline && npm run test:multi-endpoint && npm run test:guardrails && npm run test:llm-quality",
+    "test:quality": "npm run test:baseline && npm run test:guardrails && npm run test:dataset && npm run test:llm-quality",
+    "test:security": "npm run test:redteam && npm run test:redteam:full",
+    "test:nightly": "npm run test:quality && npm run test:performance && npm run test:security",
+    "view": "promptfoo view",
+    "view:latest": "promptfoo view --latest",
+    "cache:clear": "promptfoo cache clear",
+    "clean": "rm -rf ~/.promptfoo/output/*"
+  },
+  "keywords": [
+    "promptfoo",
+    "rag",
+    "security",
+    "testing",
+    "llm"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "promptfoo": "latest"
+  }
+}

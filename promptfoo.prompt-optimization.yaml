@@ -1,0 +1,173 @@
+---
+description: Prompt optimization - Compare different system prompts for RAG
+providers:
+  # Provider A: Conservative prompt
+  - id: http
+    label: conservative_prompt
+    config:
+      url: http://127.0.0.1:8000/query_with_summary
+      method: POST
+      headers:
+        Content-Type: application/json
+      body:
+        query: "{{prompt}}"
+        entity_id: test-user
+        file_id: testid1
+        k: 4
+        temperature: 0.3
+        system_prompt: |
+          You are a cautious RAG assistant. Only answer if you are 100% certain the information is in the context.
+          If you have any doubt, clearly state you don't have that information.
+          Be extremely conservative - it's better to say "I don't know" than to guess.
+  
+  # Provider B: Balanced prompt
+  - id: http
+    label: balanced_prompt
+    config:
+      url: http://127.0.0.1:8000/query_with_summary
+      method: POST
+      headers:
+        Content-Type: application/json
+      body:
+        query: "{{prompt}}"
+        entity_id: test-user
+        file_id: testid1
+        k: 4
+        temperature: 0.7
+        system_prompt: |
+          You are a helpful RAG assistant. Answer based on the provided context.
+          Be helpful and informative while staying grounded in the context.
+          If the context doesn't contain the answer, politely say so.
+  
+  # Provider C: Detailed prompt with citations
+  - id: http
+    label: detailed_with_citations
+    config:
+      url: http://127.0.0.1:8000/query_with_summary
+      method: POST
+      headers:
+        Content-Type: application/json
+      body:
+        query: "{{prompt}}"
+        entity_id: test-user
+        file_id: testid1
+        k: 4
+        temperature: 0.5
+        system_prompt: |
+          You are a thorough RAG assistant. Provide detailed answers based on the context.
+          When possible, reference which chunk the information came from (e.g., "According to Chunk 2...").
+          Organize your answer with clear structure and bullet points when appropriate.
+          Always cite your sources from the chunks.
+
+prompts:
+  - "{{user_query}}"
+
+tests:
+  # Test 1: Compare answer completeness
+  - name: "Comprehensive answer quality"
+    vars:
+      user_query: "What are the main topics and recommendations?"
+    assertions:
+      # All should return something
+      - type: javascript
+        value: |
+          const response = JSON.parse(output);
+          return response.summary && response.summary.length > 50;
+      
+      # LLM-graded quality comparison
+      - type: llm-rubric
+        value: |
+          Rate the answer quality on:
+          1. Completeness (covers all aspects)
+          2. Accuracy (based on context)
+          3. Clarity (well-structured)
+          4. Usefulness (helpful to user)
+          
+          Score 1-10 overall.
+
+  # Test 2: Handling ambiguous queries
+  - name: "Ambiguous query handling"
+    vars:
+      user_query: "Tell me more about it"
+    assertions:
+      - type: llm-rubric
+        value: |
+          Does the response appropriately handle the ambiguous query?
+          Good responses might ask for clarification or provide a general overview.
+          Score 1-5.
+
+  # Test 3: Factual accuracy
+  - name: "Factual accuracy check"
+    vars:
+      user_query: "What specific metrics are mentioned?"
+    assertions:
+      - type: llm-rubric
+        value: |
+          Are the facts in the answer accurate based on the retrieved chunks?
+          Score 1-5 where:
+          1 = Contains factual errors
+          5 = Completely accurate
+
+  # Test 4: Response latency comparison
+  - name: "Performance comparison"
+    vars:
+      user_query: "Quick summary"
+    assertions:
+      - type: javascript
+        value: |
+          const response = JSON.parse(output);
+          return response.metadata.total_latency_ms < 6000;
+      
+      # Check token efficiency
+      - type: javascript
+        value: |
+          const response = JSON.parse(output);
+          const tokensPerChar = response.metadata.tokens_total / response.summary.length;
+          return tokensPerChar < 2;  // Reasonable token efficiency
+
+  # Test 5: Citation quality (for detailed prompt)
+  - name: "Citation quality check"
+    vars:
+      user_query: "What evidence supports the main conclusions?"
+    assertions:
+      - type: llm-rubric
+        value: |
+          Does the answer provide clear citations or references to the source chunks?
+          This is especially important for the "detailed_with_citations" provider.
+          Score 1-5.
+
+  # Test 6: Conciseness vs completeness tradeoff
+  - name: "Balance of brevity and detail"
+    vars:
+      user_query: "Explain the key findings"
+    assertions:
+      - type: llm-rubric
+        value: |
+          Rate the balance between being concise and being complete.
+          Score 1-5 where:
+          1 = Either too verbose or too brief
+          5 = Perfect balance of detail and conciseness
+
+  # Test 7: Cost efficiency
+  - name: "Cost-effectiveness"
+    vars:
+      user_query: "What is this about?"
+    assertions:
+      - type: javascript
+        value: |
+          const response = JSON.parse(output);
+          return response.metadata.cost_usd < 0.001;  // Less than $0.001 per query
+
+  # Test 8: Handling edge case
+  - name: "Empty or irrelevant context"
+    vars:
+      user_query: "What is the quantum physics explanation?"
+      file_id: nonexistent
+    assertions:
+      - type: javascript
+        value: |
+          const response = JSON.parse(output);
+          const summary = response.summary.toLowerCase();
+          return summary.includes("don't") || 
+                 summary.includes("not found") ||
+                 summary.includes("no information");

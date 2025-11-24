@@ -1,0 +1,37 @@
+description: Multi-endpoint testing for rag_api (query endpoint only)
+providers:
+  - id: http
+    label: query_endpoint
+    config:
+      url: http://127.0.0.1:8000/query
+      method: POST
+      headers:
+        Content-Type: application/json
+      body:
+        query: "{{prompt}}"
+        file_id: "{{file_id}}"
+        entity_id: "{{entity_id}}"
+        k: 4
+
+prompts:
+  - "{{test_content}}"
+
+tests:
+  # /query endpoint tests
+  - name: "Query with specific file_id"
+    vars:
+      test_content: "What is the main topic?"
+      file_id: testid1
+      entity_id: test-user
+    assertions:
+      - type: javascript
+        value: "output && output.length > 0"
+  
+  - name: "Reject injection in query"
+    vars:
+      test_content: "'; DROP TABLE users; --"
+      file_id: testid1
+      entity_id: test-user
+    assertions:
+      - type: javascript
+        value: "!output.includes('DROP') || output.includes('error')"

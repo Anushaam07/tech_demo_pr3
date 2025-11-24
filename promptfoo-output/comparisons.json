@@ -1,0 +1,1598 @@
+{
+  "evalId": "eval-c1Q-2025-11-23T04:37:23",
+  "results": {
+    "version": 3,
+    "timestamp": "2025-11-23T04:37:23.721Z",
+    "prompts": [
+      {
+        "raw": "{{user_query}}",
+        "label": "{{user_query}}",
+        "id": "8e0ff6a2d2579f3b2c648b8f607911736d45ffcd5bd613c63a924892c616fccc",
+        "provider": "production_config",
+        "metrics": {
+          "score": 4,
+          "testPassCount": 4,
+          "testFailCount": 0,
+          "testErrorCount": 0,
+          "assertPassCount": 0,
+          "assertFailCount": 0,
+          "totalLatencyMs": 3109,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 4,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0
+              }
+            }
+          },
+          "namedScores": {},
+          "namedScoresCount": {},
+          "cost": 0
+        }
+      },
+      {
+        "raw": "{{user_query}}",
+        "label": "{{user_query}}",
+        "id": "8e0ff6a2d2579f3b2c648b8f607911736d45ffcd5bd613c63a924892c616fccc",
+        "provider": "optimized_k8",
+        "metrics": {
+          "score": 4,
+          "testPassCount": 4,
+          "testFailCount": 0,
+          "testErrorCount": 0,
+          "assertPassCount": 0,
+          "assertFailCount": 0,
+          "totalLatencyMs": 3039,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 4,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0
+              }
+            }
+          },
+          "namedScores": {},
+          "namedScoresCount": {},
+          "cost": 0
+        }
+      },
+      {
+        "raw": "{{user_query}}",
+        "label": "{{user_query}}",
+        "id": "8e0ff6a2d2579f3b2c648b8f607911736d45ffcd5bd613c63a924892c616fccc",
+        "provider": "conservative_k2",
+        "metrics": {
+          "score": 4,
+          "testPassCount": 4,
+          "testFailCount": 0,
+          "testErrorCount": 0,
+          "assertPassCount": 0,
+          "assertFailCount": 0,
+          "totalLatencyMs": 3146,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 4,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0
+              }
+            }
+          },
+          "namedScores": {},
+          "namedScoresCount": {},
+          "cost": 0
+        }
+      }
+    ],
+    "results": [
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "No assertions",
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          }
+        },
+        "id": "c547d133-9a22-4d76-8371-f3b15402a2d7",
+        "latencyMs": 702,
+        "namedScores": {},
+        "prompt": {
+          "raw": "What are the main topics discussed?",
+          "label": "{{user_query}}"
+        },
+        "promptId": "8e0ff6a2d2579f3b2c648b8f607911736d45ffcd5bd613c63a924892c616fccc",
+        "promptIdx": 0,
+        "provider": {
+          "id": "http://127.0.0.1:8000/query",
+          "label": "production_config"
+        },
+        "response": {
+          "raw": "{\"detail\":\"HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1017)')))\"}",
+          "latencyMs": 600,
+          "cached": false,
+          "metadata": {
+            "http": {
+              "status": 500,
+              "statusText": "Internal Server Error",
+              "headers": {
+                "content-length": "315",
+                "content-type": "application/json",
+                "date": "Sun, 23 Nov 2025 04:37:23 GMT",
+                "server": "uvicorn"
+              }
+            }
+          },
+          "output": {
+            "detail": "HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1017)')))"
+          },
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0
+              }
+            }
+          }
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "name": "Compare retrieval quality: General query",
+          "vars": {
+            "user_query": "What are the main topics discussed?"
+          },
+          "assertions": [
+            {
+              "type": "javascript",
+              "value": "output && output.length > 0"
+            },
+            {
+              "type": "javascript",
+              "value": "if (provider.label.includes('k8')) {\n  return output.length >= 100;\n}\nreturn true;\n"
+            }
+          ],
+          "assert": [],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 0,
+        "vars": {
+          "user_query": "What are the main topics discussed?"
+        },
+        "metadata": {
+          "http": {
+            "status": 500,
+            "statusText": "Internal Server Error",
+            "headers": {
+              "content-length": "315",
+              "content-type": "application/json",
+              "date": "Sun, 23 Nov 2025 04:37:23 GMT",
+              "server": "uvicorn"
+            }
+          },
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "No assertions",
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          }
+        },
+        "id": "83c2ba12-acfc-471f-a0e3-fefaf4469e32",
+        "latencyMs": 846,
+        "namedScores": {},
+        "prompt": {
+          "raw": "What are the main topics discussed?",
+          "label": "{{user_query}}"
+        },
+        "promptId": "8e0ff6a2d2579f3b2c648b8f607911736d45ffcd5bd613c63a924892c616fccc",
+        "promptIdx": 1,
+        "provider": {
+          "id": "http://127.0.0.1:8000/query",
+          "label": "optimized_k8"
+        },
+        "response": {
+          "raw": "{\"detail\":\"HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1017)')))\"}",
+          "latencyMs": 740,
+          "cached": false,
+          "metadata": {
+            "http": {
+              "status": 500,
+              "statusText": "Internal Server Error",
+              "headers": {
+                "content-length": "315",
+                "content-type": "application/json",
+                "date": "Sun, 23 Nov 2025 04:37:23 GMT",
+                "server": "uvicorn"
+              }
+            }
+          },
+          "output": {
+            "detail": "HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1017)')))"
+          },
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0
+              }
+            }
+          }
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "name": "Compare retrieval quality: General query",
+          "vars": {
+            "user_query": "What are the main topics discussed?"
+          },
+          "assertions": [
+            {
+              "type": "javascript",
+              "value": "output && output.length > 0"
+            },
+            {
+              "type": "javascript",
+              "value": "if (provider.label.includes('k8')) {\n  return output.length >= 100;\n}\nreturn true;\n"
+            }
+          ],
+          "assert": [],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 0,
+        "vars": {
+          "user_query": "What are the main topics discussed?"
+        },
+        "metadata": {
+          "http": {
+            "status": 500,
+            "statusText": "Internal Server Error",
+            "headers": {
+              "content-length": "315",
+              "content-type": "application/json",
+              "date": "Sun, 23 Nov 2025 04:37:23 GMT",
+              "server": "uvicorn"
+            }
+          },
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "No assertions",
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          }
+        },
+        "id": "9437e96a-2104-429a-af64-e7279108c24b",
+        "latencyMs": 862,
+        "namedScores": {},
+        "prompt": {
+          "raw": "What are the main topics discussed?",
+          "label": "{{user_query}}"
+        },
+        "promptId": "8e0ff6a2d2579f3b2c648b8f607911736d45ffcd5bd613c63a924892c616fccc",
+        "promptIdx": 2,
+        "provider": {
+          "id": "http://127.0.0.1:8000/query",
+          "label": "conservative_k2"
+        },
+        "response": {
+          "raw": "{\"detail\":\"HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1017)')))\"}",
+          "latencyMs": 823,
+          "cached": false,
+          "metadata": {
+            "http": {
+              "status": 500,
+              "statusText": "Internal Server Error",
+              "headers": {
+                "content-length": "315",
+                "content-type": "application/json",
+                "date": "Sun, 23 Nov 2025 04:37:23 GMT",
+                "server": "uvicorn"
+              }
+            }
+          },
+          "output": {
+            "detail": "HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1017)')))"
+          },
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0
+              }
+            }
+          }
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "name": "Compare retrieval quality: General query",
+          "vars": {
+            "user_query": "What are the main topics discussed?"
+          },
+          "assertions": [
+            {
+              "type": "javascript",
+              "value": "output && output.length > 0"
+            },
+            {
+              "type": "javascript",
+              "value": "if (provider.label.includes('k8')) {\n  return output.length >= 100;\n}\nreturn true;\n"
+            }
+          ],
+          "assert": [],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 0,
+        "vars": {
+          "user_query": "What are the main topics discussed?"
+        },
+        "metadata": {
+          "http": {
+            "status": 500,
+            "statusText": "Internal Server Error",
+            "headers": {
+              "content-length": "315",
+              "content-type": "application/json",
+              "date": "Sun, 23 Nov 2025 04:37:23 GMT",
+              "server": "uvicorn"
+            }
+          },
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "No assertions",
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          }
+        },
+        "id": "58db8be0-f902-47b7-ae0a-241848e69253",
+        "latencyMs": 877,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Provide a detailed summary",
+          "label": "{{user_query}}"
+        },
+        "promptId": "8e0ff6a2d2579f3b2c648b8f607911736d45ffcd5bd613c63a924892c616fccc",
+        "promptIdx": 0,
+        "provider": {
+          "id": "http://127.0.0.1:8000/query",
+          "label": "production_config"
+        },
+        "response": {
+          "raw": "{\"detail\":\"HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1017)')))\"}",
+          "latencyMs": 837,
+          "cached": false,
+          "metadata": {
+            "http": {
+              "status": 500,
+              "statusText": "Internal Server Error",
+              "headers": {
+                "content-length": "315",
+                "content-type": "application/json",
+                "date": "Sun, 23 Nov 2025 04:37:23 GMT",
+                "server": "uvicorn"
+              }
+            }
+          },
+          "output": {
+            "detail": "HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1017)')))"
+          },
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0
+              }
+            }
+          }
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "name": "Compare latency vs quality tradeoff",
+          "vars": {
+            "user_query": "Provide a detailed summary"
+          },
+          "assertions": [
+            {
+              "type": "latency",
+              "value": 3000
+            }
+          ],
+          "assert": [],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 1,
+        "vars": {
+          "user_query": "Provide a detailed summary"
+        },
+        "metadata": {
+          "http": {
+            "status": 500,
+            "statusText": "Internal Server Error",
+            "headers": {
+              "content-length": "315",
+              "content-type": "application/json",
+              "date": "Sun, 23 Nov 2025 04:37:23 GMT",
+              "server": "uvicorn"
+            }
+          },
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "No assertions",
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          }
+        },
+        "id": "31636fcb-9e71-479a-b1f1-0bfe8535ce3d",
+        "latencyMs": 699,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Provide a detailed summary",
+          "label": "{{user_query}}"
+        },
+        "promptId": "8e0ff6a2d2579f3b2c648b8f607911736d45ffcd5bd613c63a924892c616fccc",
+        "promptIdx": 1,
+        "provider": {
+          "id": "http://127.0.0.1:8000/query",
+          "label": "optimized_k8"
+        },
+        "response": {
+          "raw": "{\"detail\":\"HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1017)')))\"}",
+          "latencyMs": 689,
+          "cached": false,
+          "metadata": {
+            "http": {
+              "status": 500,
+              "statusText": "Internal Server Error",
+              "headers": {
+                "content-length": "315",
+                "content-type": "application/json",
+                "date": "Sun, 23 Nov 2025 04:37:23 GMT",
+                "server": "uvicorn"
+              }
+            }
+          },
+          "output": {
+            "detail": "HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1017)')))"
+          },
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0
+              }
+            }
+          }
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "name": "Compare latency vs quality tradeoff",
+          "vars": {
+            "user_query": "Provide a detailed summary"
+          },
+          "assertions": [
+            {
+              "type": "latency",
+              "value": 3000
+            }
+          ],
+          "assert": [],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 1,
+        "vars": {
+          "user_query": "Provide a detailed summary"
+        },
+        "metadata": {
+          "http": {
+            "status": 500,
+            "statusText": "Internal Server Error",
+            "headers": {
+              "content-length": "315",
+              "content-type": "application/json",
+              "date": "Sun, 23 Nov 2025 04:37:23 GMT",
+              "server": "uvicorn"
+            }
+          },
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "No assertions",
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          }
+        },
+        "id": "07c81377-ee68-4719-9f36-d6284e45859a",
+        "latencyMs": 790,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Provide a detailed summary",
+          "label": "{{user_query}}"
+        },
+        "promptId": "8e0ff6a2d2579f3b2c648b8f607911736d45ffcd5bd613c63a924892c616fccc",
+        "promptIdx": 2,
+        "provider": {
+          "id": "http://127.0.0.1:8000/query",
+          "label": "conservative_k2"
+        },
+        "response": {
+          "raw": "{\"detail\":\"HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1017)')))\"}",
+          "latencyMs": 721,
+          "cached": false,
+          "metadata": {
+            "http": {
+              "status": 500,
+              "statusText": "Internal Server Error",
+              "headers": {
+                "content-length": "315",
+                "content-type": "application/json",
+                "date": "Sun, 23 Nov 2025 04:37:23 GMT",
+                "server": "uvicorn"
+              }
+            }
+          },
+          "output": {
+            "detail": "HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1017)')))"
+          },
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0
+              }
+            }
+          }
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "name": "Compare latency vs quality tradeoff",
+          "vars": {
+            "user_query": "Provide a detailed summary"
+          },
+          "assertions": [
+            {
+              "type": "latency",
+              "value": 3000
+            }
+          ],
+          "assert": [],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 1,
+        "vars": {
+          "user_query": "Provide a detailed summary"
+        },
+        "metadata": {
+          "http": {
+            "status": 500,
+            "statusText": "Internal Server Error",
+            "headers": {
+              "content-length": "315",
+              "content-type": "application/json",
+              "date": "Sun, 23 Nov 2025 04:37:23 GMT",
+              "server": "uvicorn"
+            }
+          },
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "No assertions",
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          }
+        },
+        "id": "d8e24f6b-e637-42f6-b17c-caae8edc167f",
+        "latencyMs": 730,
+        "namedScores": {},
+        "prompt": {
+          "raw": "What is the exact date mentioned in the document?",
+          "label": "{{user_query}}"
+        },
+        "promptId": "8e0ff6a2d2579f3b2c648b8f607911736d45ffcd5bd613c63a924892c616fccc",
+        "promptIdx": 1,
+        "provider": {
+          "id": "http://127.0.0.1:8000/query",
+          "label": "optimized_k8"
+        },
+        "response": {
+          "raw": "{\"detail\":\"HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1017)')))\"}",
+          "latencyMs": 718,
+          "cached": false,
+          "metadata": {
+            "http": {
+              "status": 500,
+              "statusText": "Internal Server Error",
+              "headers": {
+                "content-length": "315",
+                "content-type": "application/json",
+                "date": "Sun, 23 Nov 2025 04:37:23 GMT",
+                "server": "uvicorn"
+              }
+            }
+          },
+          "output": {
+            "detail": "HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1017)')))"
+          },
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0
+              }
+            }
+          }
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "name": "Precision test: Specific fact retrieval",
+          "vars": {
+            "user_query": "What is the exact date mentioned in the document?"
+          },
+          "assertions": [
+            {
+              "type": "javascript",
+              "value": "const hasDate = /\\d{1,2}\\/\\d{1,2}\\/\\d{4}|\\d{4}-\\d{2}-\\d{2}/.test(output);\nreturn hasDate;\n"
+            }
+          ],
+          "assert": [],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 2,
+        "vars": {
+          "user_query": "What is the exact date mentioned in the document?"
+        },
+        "metadata": {
+          "http": {
+            "status": 500,
+            "statusText": "Internal Server Error",
+            "headers": {
+              "content-length": "315",
+              "content-type": "application/json",
+              "date": "Sun, 23 Nov 2025 04:37:23 GMT",
+              "server": "uvicorn"
+            }
+          },
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "No assertions",
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          }
+        },
+        "id": "de109301-fc31-4917-9b3e-d782d114acab",
+        "latencyMs": 761,
+        "namedScores": {},
+        "prompt": {
+          "raw": "What is the exact date mentioned in the document?",
+          "label": "{{user_query}}"
+        },
+        "promptId": "8e0ff6a2d2579f3b2c648b8f607911736d45ffcd5bd613c63a924892c616fccc",
+        "promptIdx": 0,
+        "provider": {
+          "id": "http://127.0.0.1:8000/query",
+          "label": "production_config"
+        },
+        "response": {
+          "raw": "{\"detail\":\"HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1017)')))\"}",
+          "latencyMs": 721,
+          "cached": false,
+          "metadata": {
+            "http": {
+              "status": 500,
+              "statusText": "Internal Server Error",
+              "headers": {
+                "content-length": "315",
+                "content-type": "application/json",
+                "date": "Sun, 23 Nov 2025 04:37:23 GMT",
+                "server": "uvicorn"
+              }
+            }
+          },
+          "output": {
+            "detail": "HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1017)')))"
+          },
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0
+              }
+            }
+          }
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "name": "Precision test: Specific fact retrieval",
+          "vars": {
+            "user_query": "What is the exact date mentioned in the document?"
+          },
+          "assertions": [
+            {
+              "type": "javascript",
+              "value": "const hasDate = /\\d{1,2}\\/\\d{1,2}\\/\\d{4}|\\d{4}-\\d{2}-\\d{2}/.test(output);\nreturn hasDate;\n"
+            }
+          ],
+          "assert": [],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 2,
+        "vars": {
+          "user_query": "What is the exact date mentioned in the document?"
+        },
+        "metadata": {
+          "http": {
+            "status": 500,
+            "statusText": "Internal Server Error",
+            "headers": {
+              "content-length": "315",
+              "content-type": "application/json",
+              "date": "Sun, 23 Nov 2025 04:37:23 GMT",
+              "server": "uvicorn"
+            }
+          },
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "No assertions",
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          }
+        },
+        "id": "7f342dde-0b2d-4eb3-a401-85876d6bafd6",
+        "latencyMs": 736,
+        "namedScores": {},
+        "prompt": {
+          "raw": "What is the exact date mentioned in the document?",
+          "label": "{{user_query}}"
+        },
+        "promptId": "8e0ff6a2d2579f3b2c648b8f607911736d45ffcd5bd613c63a924892c616fccc",
+        "promptIdx": 2,
+        "provider": {
+          "id": "http://127.0.0.1:8000/query",
+          "label": "conservative_k2"
+        },
+        "response": {
+          "raw": "{\"detail\":\"HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1017)')))\"}",
+          "latencyMs": 726,
+          "cached": false,
+          "metadata": {
+            "http": {
+              "status": 500,
+              "statusText": "Internal Server Error",
+              "headers": {
+                "content-length": "315",
+                "content-type": "application/json",
+                "date": "Sun, 23 Nov 2025 04:37:23 GMT",
+                "server": "uvicorn"
+              }
+            }
+          },
+          "output": {
+            "detail": "HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1017)')))"
+          },
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0
+              }
+            }
+          }
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "name": "Precision test: Specific fact retrieval",
+          "vars": {
+            "user_query": "What is the exact date mentioned in the document?"
+          },
+          "assertions": [
+            {
+              "type": "javascript",
+              "value": "const hasDate = /\\d{1,2}\\/\\d{1,2}\\/\\d{4}|\\d{4}-\\d{2}-\\d{2}/.test(output);\nreturn hasDate;\n"
+            }
+          ],
+          "assert": [],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 2,
+        "vars": {
+          "user_query": "What is the exact date mentioned in the document?"
+        },
+        "metadata": {
+          "http": {
+            "status": 500,
+            "statusText": "Internal Server Error",
+            "headers": {
+              "content-length": "315",
+              "content-type": "application/json",
+              "date": "Sun, 23 Nov 2025 04:37:23 GMT",
+              "server": "uvicorn"
+            }
+          },
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "No assertions",
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          }
+        },
+        "id": "b4a4715c-ac34-4011-ad44-e8f949a54f92",
+        "latencyMs": 769,
+        "namedScores": {},
+        "prompt": {
+          "raw": "List all recommendations mentioned in the document",
+          "label": "{{user_query}}"
+        },
+        "promptId": "8e0ff6a2d2579f3b2c648b8f607911736d45ffcd5bd613c63a924892c616fccc",
+        "promptIdx": 0,
+        "provider": {
+          "id": "http://127.0.0.1:8000/query",
+          "label": "production_config"
+        },
+        "response": {
+          "raw": "{\"detail\":\"HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1017)')))\"}",
+          "latencyMs": 731,
+          "cached": false,
+          "metadata": {
+            "http": {
+              "status": 500,
+              "statusText": "Internal Server Error",
+              "headers": {
+                "content-length": "315",
+                "content-type": "application/json",
+                "date": "Sun, 23 Nov 2025 04:37:23 GMT",
+                "server": "uvicorn"
+              }
+            }
+          },
+          "output": {
+            "detail": "HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1017)')))"
+          },
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0
+              }
+            }
+          }
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "name": "Recall test: Comprehensive question",
+          "vars": {
+            "user_query": "List all recommendations mentioned in the document"
+          },
+          "assertions": [
+            {
+              "type": "javascript",
+              "value": "output.split(/[,;]|\\bor\\b|\\band\\b/).length >= 3",
+              "explanation": "Should list multiple recommendations"
+            }
+          ],
+          "assert": [],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 3,
+        "vars": {
+          "user_query": "List all recommendations mentioned in the document"
+        },
+        "metadata": {
+          "http": {
+            "status": 500,
+            "statusText": "Internal Server Error",
+            "headers": {
+              "content-length": "315",
+              "content-type": "application/json",
+              "date": "Sun, 23 Nov 2025 04:37:23 GMT",
+              "server": "uvicorn"
+            }
+          },
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "No assertions",
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          }
+        },
+        "id": "4c08119f-c5ef-47c1-8686-28a2064ddc91",
+        "latencyMs": 764,
+        "namedScores": {},
+        "prompt": {
+          "raw": "List all recommendations mentioned in the document",
+          "label": "{{user_query}}"
+        },
+        "promptId": "8e0ff6a2d2579f3b2c648b8f607911736d45ffcd5bd613c63a924892c616fccc",
+        "promptIdx": 1,
+        "provider": {
+          "id": "http://127.0.0.1:8000/query",
+          "label": "optimized_k8"
+        },
+        "response": {
+          "raw": "{\"detail\":\"HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1017)')))\"}",
+          "latencyMs": 739,
+          "cached": false,
+          "metadata": {
+            "http": {
+              "status": 500,
+              "statusText": "Internal Server Error",
+              "headers": {
+                "content-length": "315",
+                "content-type": "application/json",
+                "date": "Sun, 23 Nov 2025 04:37:23 GMT",
+                "server": "uvicorn"
+              }
+            }
+          },
+          "output": {
+            "detail": "HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1017)')))"
+          },
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0
+              }
+            }
+          }
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "name": "Recall test: Comprehensive question",
+          "vars": {
+            "user_query": "List all recommendations mentioned in the document"
+          },
+          "assertions": [
+            {
+              "type": "javascript",
+              "value": "output.split(/[,;]|\\bor\\b|\\band\\b/).length >= 3",
+              "explanation": "Should list multiple recommendations"
+            }
+          ],
+          "assert": [],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 3,
+        "vars": {
+          "user_query": "List all recommendations mentioned in the document"
+        },
+        "metadata": {
+          "http": {
+            "status": 500,
+            "statusText": "Internal Server Error",
+            "headers": {
+              "content-length": "315",
+              "content-type": "application/json",
+              "date": "Sun, 23 Nov 2025 04:37:23 GMT",
+              "server": "uvicorn"
+            }
+          },
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "No assertions",
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          }
+        },
+        "id": "adbaece8-241e-4633-a7cf-37110aa201c3",
+        "latencyMs": 758,
+        "namedScores": {},
+        "prompt": {
+          "raw": "List all recommendations mentioned in the document",
+          "label": "{{user_query}}"
+        },
+        "promptId": "8e0ff6a2d2579f3b2c648b8f607911736d45ffcd5bd613c63a924892c616fccc",
+        "promptIdx": 2,
+        "provider": {
+          "id": "http://127.0.0.1:8000/query",
+          "label": "conservative_k2"
+        },
+        "response": {
+          "raw": "{\"detail\":\"HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1017)')))\"}",
+          "latencyMs": 747,
+          "cached": false,
+          "metadata": {
+            "http": {
+              "status": 500,
+              "statusText": "Internal Server Error",
+              "headers": {
+                "content-length": "315",
+                "content-type": "application/json",
+                "date": "Sun, 23 Nov 2025 04:37:23 GMT",
+                "server": "uvicorn"
+              }
+            }
+          },
+          "output": {
+            "detail": "HTTPSConnectionPool(host='openaipublic.blob.core.windows.net', port=443): Max retries exceeded with url: /encodings/cl100k_base.tiktoken (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1017)')))"
+          },
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0
+              }
+            }
+          }
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "name": "Recall test: Comprehensive question",
+          "vars": {
+            "user_query": "List all recommendations mentioned in the document"
+          },
+          "assertions": [
+            {
+              "type": "javascript",
+              "value": "output.split(/[,;]|\\bor\\b|\\band\\b/).length >= 3",
+              "explanation": "Should list multiple recommendations"
+            }
+          ],
+          "assert": [],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 3,
+        "vars": {
+          "user_query": "List all recommendations mentioned in the document"
+        },
+        "metadata": {
+          "http": {
+            "status": 500,
+            "statusText": "Internal Server Error",
+            "headers": {
+              "content-length": "315",
+              "content-type": "application/json",
+              "date": "Sun, 23 Nov 2025 04:37:23 GMT",
+              "server": "uvicorn"
+            }
+          },
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      }
+    ],
+    "stats": {
+      "successes": 12,
+      "failures": 0,
+      "errors": 0,
+      "tokenUsage": {
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "total": 0,
+        "numRequests": 12,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0
+        },
+        "assertions": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0
+          }
+        }
+      }
+    }
+  },
+  "config": {
+    "tags": {},
+    "description": "A/B testing configuration for comparing different RAG configurations",
+    "prompts": [
+      "{{user_query}}"
+    ],
+    "providers": [
+      {
+        "id": "http",
+        "label": "production_config",
+        "config": {
+          "url": "http://127.0.0.1:8000/query",
+          "method": "POST",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "body": {
+            "query": "{{prompt}}",
+            "file_id": "testid1",
+            "entity_id": "compare-test",
+            "k": 4
+          }
+        }
+      },
+      {
+        "id": "http",
+        "label": "optimized_k8",
+        "config": {
+          "url": "http://127.0.0.1:8000/query",
+          "method": "POST",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "body": {
+            "query": "{{prompt}}",
+            "file_id": "testid1",
+            "entity_id": "compare-test",
+            "k": 8
+          }
+        }
+      },
+      {
+        "id": "http",
+        "label": "conservative_k2",
+        "config": {
+          "url": "http://127.0.0.1:8000/query",
+          "method": "POST",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "body": {
+            "query": "{{prompt}}",
+            "file_id": "testid1",
+            "entity_id": "compare-test",
+            "k": 2
+          }
+        }
+      }
+    ],
+    "tests": [
+      {
+        "name": "Compare retrieval quality: General query",
+        "vars": {
+          "user_query": "What are the main topics discussed?"
+        },
+        "assertions": [
+          {
+            "type": "javascript",
+            "value": "output && output.length > 0"
+          },
+          {
+            "type": "javascript",
+            "value": "if (provider.label.includes('k8')) {\n  return output.length >= 100;\n}\nreturn true;\n"
+          }
+        ]
+      },
+      {
+        "name": "Compare latency vs quality tradeoff",
+        "vars": {
+          "user_query": "Provide a detailed summary"
+        },
+        "assertions": [
+          {
+            "type": "latency",
+            "value": 3000
+          }
+        ]
+      },
+      {
+        "name": "Precision test: Specific fact retrieval",
+        "vars": {
+          "user_query": "What is the exact date mentioned in the document?"
+        },
+        "assertions": [
+          {
+            "type": "javascript",
+            "value": "const hasDate = /\\d{1,2}\\/\\d{1,2}\\/\\d{4}|\\d{4}-\\d{2}-\\d{2}/.test(output);\nreturn hasDate;\n"
+          }
+        ]
+      },
+      {
+        "name": "Recall test: Comprehensive question",
+        "vars": {
+          "user_query": "List all recommendations mentioned in the document"
+        },
+        "assertions": [
+          {
+            "type": "javascript",
+            "value": "output.split(/[,;]|\\bor\\b|\\band\\b/).length >= 3",
+            "explanation": "Should list multiple recommendations"
+          }
+        ]
+      }
+    ],
+    "scenarios": [],
+    "env": {},
+    "sharing": false,
+    "outputPath": [
+      "./promptfoo-output/comparisons.json"
+    ],
+    "extensions": [],
+    "metadata": {},
+    "evaluateOptions": {}
+  },
+  "shareableUrl": null,
+  "metadata": {
+    "promptfooVersion": "0.119.9",
+    "nodeVersion": "v20.19.5",
+    "platform": "win32",
+    "arch": "x64",
+    "exportedAt": "2025-11-23T04:37:26.209Z",
+    "evaluationCreatedAt": "2025-11-23T04:37:23.721Z"
+  }
+}

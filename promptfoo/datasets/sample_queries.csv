@@ -1,0 +1,9 @@
+user_query,file_id,entity_id,expected_topic
+"What are the main points in this document?",testid1,user-123,summary
+"Summarize the key findings",testid2,user-123,findings
+"List all action items mentioned",testid3,user-123,action_items
+"What is the author's conclusion?",testid1,user-456,conclusion
+"Extract all dates and deadlines",testid2,user-456,dates
+"Who are the stakeholders mentioned?",testid3,user-456,stakeholders
+"What are the risks identified?",testid1,user-789,risks
+"Explain the methodology used",testid2,user-789,methodology

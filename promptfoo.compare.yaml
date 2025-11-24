@@ -1,0 +1,94 @@
+---
+description: A/B testing configuration for comparing different RAG configurations
+providers:
+  # Provider A: Current production settings
+  - id: http
+    label: production_config
+    config:
+      url: http://127.0.0.1:8000/query
+      method: POST
+      headers:
+        Content-Type: application/json
+      body:
+        query: "{{prompt}}"
+        file_id: testid1
+        entity_id: test-user
+        k: 4
+  
+  # Provider B: Optimized settings (higher k)
+  - id: http
+    label: optimized_k8
+    config:
+      url: http://127.0.0.1:8000/query
+      method: POST
+      headers:
+        Content-Type: application/json
+      body:
+        query: "{{prompt}}"
+        file_id: testid1
+        entity_id: test-user
+        k: 8
+  
+  # Provider C: Conservative settings (lower k)
+  - id: http
+    label: conservative_k2
+    config:
+      url: http://127.0.0.1:8000/query
+      method: POST
+      headers:
+        Content-Type: application/json
+      body:
+        query: "{{prompt}}"
+        file_id: testid1
+        entity_id: test-user
+        k: 2
+
+prompts:
+  - "{{user_query}}"
+
+tests:
+  - name: "Compare retrieval quality: General query"
+    vars:
+      user_query: "What are the main topics discussed?"
+    assertions:
+      # All providers should return something
+      - type: javascript
+        value: "output && output.length > 0"
+      
+      # Compare length - higher k should return more content
+      - type: javascript
+        value: |
+          if (provider.label.includes('k8')) {
+            return output.length >= 100;
+          }
+          return true;
+  
+  - name: "Compare latency vs quality tradeoff"
+    vars:
+      user_query: "Provide a detailed summary"
+    assertions:
+      # Production should be reasonably fast
+      - type: latency
+        value: 3000
+  
+  - name: "Precision test: Specific fact retrieval"
+    vars:
+      user_query: "What is the exact date mentioned in the document?"
+    assertions:
+      # Lower k might be more precise
+      - type: javascript
+        value: |
+          const hasDate = /\d{1,2}\/\d{1,2}\/\d{4}|\d{4}-\d{2}-\d{2}/.test(output);
+          return hasDate;
+
+  - name: "Recall test: Comprehensive question"
+    vars:
+      user_query: "List all recommendations mentioned in the document"
+    assertions:
+      # Higher k should capture more items
+      - type: javascript
+        value: "output.split(/[,;]|\\bor\\b|\\band\\b/).length >= 3"
+        explanation: "Should list multiple recommendations"
+
+# Compare outputs side-by-side
+outputPath: ./promptfoo-output/comparisons.json

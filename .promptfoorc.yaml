@@ -1,0 +1,50 @@
+---
+# Global Promptfoo configuration
+# This file sets default behaviors for all test runs
+
+# Default output location for test results
+outputPath: ./promptfoo-output
+
+# Enable sharing results (set to false for private/internal use)
+sharing: false
+
+# Default test generation settings
+defaultTest:
+  options:
+    # Timeout for each test (milliseconds)
+    timeout: 30000
+    # Max retries on transient failures
+    maxConcurrency: 4
+
+# Enable result caching to speed up re-runs
+cache:
+  enabled: true
+  path: ./.promptfoo-cache
+
+# Telemetry (opt-out if desired)
+telemetry: false
+
+# Default environment variables (can be overridden)
+env:
+  PROMPTFOO_RAG_K: "4"
+  PROMPTFOO_RAG_TIMEOUT: "30"
+  PROMPTFOO_RAG_FILE_ID: "testid1"
+  PROMPTFOO_RAG_ENTITY_ID: "promptfoo"
+
+# Result reporting preferences
+resultReporting:
+  # Generate HTML report by default
+  html: true
+  # Also output JSON for programmatic analysis
+  json: true
+  # Display table in terminal
+  table: true
+
+# Red team specific defaults
+redteam:
+  # Cache LLM generations to save API costs
+  cache: true
+  # Default number of test variations per plugin
+  numTests: 5
+  # Default delay between requests (ms) to avoid rate limits
+  delay: 100

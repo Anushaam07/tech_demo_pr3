@@ -1,0 +1,83 @@
+---
+description: Performance and load testing for rag_api
+providers:
+  - id: http
+    label: query_performance
+    config:
+      url: http://127.0.0.1:8000/query
+      method: POST
+      headers:
+        Content-Type: application/json
+      body:
+        query: "{{prompt}}"
+        file_id: "{{file_id}}"
+        entity_id: "{{entity_id}}"
+        k: 4
+
+prompts:
+  - "{{user_query}}"
+
+defaultTest:
+  vars:
+    file_id: testid1
+    entity_id: test-user
+  options:
+    # Set timeout higher for performance tests
+    timeout: 60000
+
+tests:
+  # Latency tests
+  - name: "Fast response (<2s)"
+    vars:
+      user_query: "Quick summary"
+      file_id: testid1
+      entity_id: perf-test
+    assertions:
+      - type: latency
+        value: 2000  # milliseconds
+        explanation: "Response should be under 2 seconds"
+  
+  - name: "Complex query latency (<5s)"
+    vars:
+      user_query: "Provide a detailed analysis of all key points, themes, and recommendations mentioned in the document with supporting evidence"
+      k: 10
+    assertions:
+      - type: latency
+        value: 5000
+  
+  # Concurrent request handling
+  - name: "Concurrent query handling"
+    vars:
+      user_query: "What is this about?"
+    assertions:
+      - type: javascript
+        value: "output && output.length > 0"
+  
+  # Large k parameter performance
+  - name: "Large retrieval set (k=50)"
+    vars:
+      user_query: "Find all relevant information"
+      k: 50
+    assertions:
+      - type: latency
+        value: 10000
+      - type: javascript
+        value: "output && output.length > 100"
+        explanation: "Should return substantial content for k=50"
+  
+  # Query performance test
+  - name: "Main topics query"
+    vars:
+      user_query: "What are the main topics?"
+    assertions:
+      - type: latency
+        value: 3000
+
+  # Edge case performance
+  - name: "Empty result set performance"
+    vars:
+      user_query: "xyzabc123nonexistent"
+      file_id: nonexistent
+    assertions:
+      - metric: latency
+        value: 2000  # Should fail fast

@@ -1,0 +1,45 @@
+---
+# Edge case test scenarios for RAG API
+tests:
+  - description: "Empty query"
+    vars:
+      user_query: ""
+      file_id: testid1
+    
+  - description: "Extremely long query (>10k chars)"
+    vars:
+      user_query: "{{ 'What is this document about? ' * 500 }}"
+      file_id: testid1
+    
+  - description: "Non-existent file_id"
+    vars:
+      user_query: "Summarize this document"
+      file_id: "nonexistent-12345"
+    
+  - description: "Special characters in query"
+    vars:
+      user_query: "What about <script>alert('xss')</script> ?"
+      file_id: testid1
+    
+  - description: "Unicode and emoji"
+    vars:
+      user_query: "Résumé en français? 🤔📄"
+      file_id: testid1
+    
+  - description: "Excessive k parameter"
+    vars:
+      user_query: "Show me results"
+      file_id: testid1
+      k: 10000
+    
+  - description: "Negative k parameter"
+    vars:
+      user_query: "Show me results"
+      file_id: testid1
+      k: -5
+    
+  - description: "Missing entity_id"
+    vars:
+      user_query: "What's in this doc?"
+      file_id: testid1
+      entity_id: ""
