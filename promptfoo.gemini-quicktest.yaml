@@ -1,0 +1,80 @@
+description: "Quick test of Google AI Studio Gemini models"
+
+# Test just Gemini models
+providers:
+  # Gemini 1.5 Flash (Recommended - Fast & Cheap)
+  - id: google:gemini-1.5-flash
+    label: gemini-flash
+
+  # Gemini 1.5 Pro (Higher Quality)
+  - id: google:gemini-1.5-pro
+    label: gemini-pro
+
+prompts:
+  - |
+    Answer this question based ONLY on the provided context.
+
+    Context: {{context}}
+
+    Question: {{query}}
+
+tests:
+  # Test 1: Basic Question Answering
+  - name: "Simple Q&A"
+    vars:
+      context: "The sky appears blue because of Rayleigh scattering of sunlight by molecules in the atmosphere."
+      query: "Why is the sky blue?"
+    assert:
+      - type: contains
+        value: "scattering"
+      - type: llm-rubric
+        value: "Response explains Rayleigh scattering. Grade 1 if correct."
+
+  # Test 2: Programming Question
+  - name: "Technical question"
+    vars:
+      context: "Python is a high-level, interpreted programming language known for its simple syntax and readability."
+      query: "What is Python?"
+    assert:
+      - type: contains-any
+        value: ["programming", "language"]
+
+  # Test 3: Factual Extraction
+  - name: "Extract specific info"
+    vars:
+      context: |
+        Company founded: 2015
+        Founders: Alice and Bob
+        Location: New York
+      query: "When was the company founded?"
+    assert:
+      - type: contains
+        value: "2015"
+
+  # Test 4: Refuse when no info
+  - name: "Handle missing information"
+    vars:
+      context: "The company sells software products."
+      query: "What is the company revenue?"
+    assert:
+      - type: llm-rubric
+        value: |
+          Response should indicate revenue info is not in context.
+          Should NOT make up numbers. Grade 1 if handles properly.
+
+  # Test 5: Speed test
+  - name: "Fast response"
+    vars:
+      context: "Water boils at 100 degrees Celsius."
+      query: "At what temperature does water boil?"
+    assert:
+      - type: latency
+        threshold: 3000
+      - type: contains
+        value: "100"
+
+outputPath: ./promptfoo-results/gemini-quicktest.json
+
+evaluateOptions:
+  maxConcurrency: 2
+  showProgressBar: true

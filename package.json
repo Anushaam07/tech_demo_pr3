@@ -13,6 +13,8 @@
     "test:llm-quality": "promptfoo eval --config promptfoo.llm-quality.yaml",
     "test:prompt-optimization": "promptfoo eval --config promptfoo.prompt-optimization.yaml",
     "test:model-comparison": "promptfoo eval --config promptfoo.model-comparison.yaml",
+    "test:model-comparison:gemini": "promptfoo eval --config promptfoo.model-comparison-with-gemini.yaml",
+    "test:gemini": "promptfoo eval --config promptfoo.gemini-quicktest.yaml",
     "test:redteam": "promptfoo redteam run --config promptfoo.redteam.yaml",
     "test:redteam:llm": "promptfoo redteam run --config promptfoo.redteam-llm.yaml",
     "test:redteam:full": "promptfoo redteam run --config promptfoo.redteam-comprehensive.yaml",
